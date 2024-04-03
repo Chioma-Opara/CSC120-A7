@@ -73,6 +73,9 @@ public class Building {
         if (floorNum < 1 || floorNum > this.nFloors) {
             throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
         }
+         if (!this.hasElevator){
+      throw new RuntimeException(this.name + "has no elevator. You must use the stairs");
+    }
         System.out.println("You are now on floor #" + floorNum + " of " + this.name);
         this.activeFloor = floorNum;
     }
@@ -106,7 +109,7 @@ public class Building {
         System.out.println("Demonstrating enter/exit/navigation");
         System.out.println("-----------------------------------");
         fordHall.enter();
-        fordHall.goUp();
+        fordHall.goToFloor(3);
         fordHall.goDown();
         fordHall.exit();
     }
